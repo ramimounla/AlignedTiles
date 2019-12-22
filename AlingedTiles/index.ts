@@ -1,12 +1,22 @@
-import {IInputs, IOutputs} from "./generated/ManifestTypes";
+import { IInputs, IOutputs } from "./generated/ManifestTypes";
+import { spawnSync } from "child_process";
 
 export class AlingedTiles implements ComponentFramework.StandardControl<IInputs, IOutputs> {
+
+	private _context: ComponentFramework.Context<IInputs>;
+
+	private _spanValue1: HTMLSpanElement;
+	private _spanValue2: HTMLSpanElement;
+	private _spanValue3: HTMLSpanElement;
+	
+	
+
+
 
 	/**
 	 * Empty constructor.
 	 */
-	constructor()
-	{
+	constructor() {
 
 	}
 
@@ -18,27 +28,81 @@ export class AlingedTiles implements ComponentFramework.StandardControl<IInputs,
 	 * @param state A piece of data that persists in one session for a single user. Can be set at any point in a controls life cycle by calling 'setControlState' in the Mode interface.
 	 * @param container If a control is marked control-type='standard', it will receive an empty div element within which it can render its content.
 	 */
-	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement)
-	{
+	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container: HTMLDivElement) {
 		// Add control initialization code
+		// var localDiv: HTMLDivElement;
+		// localDiv = document.createElement("div");
+		// localDiv.className = "divstyle divother";
+		// localDiv.style.backgroundColor = context.parameters.colour.raw || "";
+
+		// this._spanDescription = document.createElement("span");
+		// this._spanDescription.className = "descriptionstyle";
+		// localDiv.appendChild(this._spanDescription);
+
+		// this._spanValue = document.createElement("span");
+		// this._spanValue.className = "spanstyle";
+		// localDiv.appendChild(this._spanValue);
+
+		// this._spanValue.innerText = context.parameters.input.raw;
+		// this._spanDescription.innerText = context.parameters.title.raw || "";
+
+		// if (((context.parameters.tabName.raw || "").trim().length > 0)) {
+		// 	localDiv.style.cursor = "pointer";
+		// 	localDiv.onclick = ((e: MouseEvent) => this.navigateToTab(context.parameters.tabName.raw || ""));
+		// }
+
+		container.appendChild(this.createTile(context.parameters.colour1.raw || "", context.parameters.input1.raw || "", context.parameters.title1.raw || "", context.parameters.tabName1.raw || "", this._spanValue1));
+		container.appendChild(this.createTile(context.parameters.colour2.raw || "", context.parameters.input2.raw || "", context.parameters.title2.raw || "", context.parameters.tabName2.raw || "", this._spanValue2));
+		container.appendChild(this.createTile(context.parameters.colour3.raw || "", context.parameters.input3.raw || "", context.parameters.title3.raw || "", context.parameters.tabName3.raw || "", this._spanValue3));
+	}
+
+	private createTile(backgroundColor: string, text: string, title: string, tabName: string, span: HTMLSpanElement): HTMLDivElement {
+		let localDiv: HTMLDivElement;
+		localDiv = document.createElement("div");
+		localDiv.className = "divstyle divother";
+		localDiv.style.backgroundColor = backgroundColor;
+
+		let spanDescription: HTMLSpanElement;
+
+		spanDescription = document.createElement("span");
+		spanDescription.className = "descriptionstyle";
+		localDiv.appendChild(spanDescription);
+
+		span = document.createElement("span");
+		span.className = "spanstyle";
+		localDiv.appendChild(span);
+
+		span.innerText = text;
+		spanDescription.innerText = title;
+
+		if (((tabName).trim().length > 0)) {
+			localDiv.style.cursor = "pointer";
+			localDiv.onclick = ((e: MouseEvent) => this.navigateToTab(tabName));
+		}
+
+		return localDiv;
 	}
 
 
+	private navigateToTab(tabName: string): void {
+		eval("Xrm.Page.ui.tabs.get(tabName).setFocus()");
+	}
 	/**
 	 * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
 	 * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
 	 */
-	public updateView(context: ComponentFramework.Context<IInputs>): void
-	{
+	public updateView(context: ComponentFramework.Context<IInputs>): void {
 		// Add code to update control view
+		this._spanValue1.innerText = context.parameters.input1.raw || "";
+		this._spanValue2.innerText = context.parameters.input1.raw || "";
+		this._spanValue3.innerText = context.parameters.input1.raw || "";
 	}
 
 	/** 
 	 * It is called by the framework prior to a control receiving new data. 
 	 * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
 	 */
-	public getOutputs(): IOutputs
-	{
+	public getOutputs(): IOutputs {
 		return {};
 	}
 
@@ -46,8 +110,7 @@ export class AlingedTiles implements ComponentFramework.StandardControl<IInputs,
 	 * Called when the control is to be removed from the DOM tree. Controls should use this call for cleanup.
 	 * i.e. cancelling any pending remote calls, removing listeners, etc.
 	 */
-	public destroy(): void
-	{
+	public destroy(): void {
 		// Add code to cleanup control if necessary
 	}
 }
