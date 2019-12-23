@@ -8,8 +8,8 @@ export class AlingedTiles implements ComponentFramework.StandardControl<IInputs,
 	private _spanValue1: HTMLSpanElement;
 	private _spanValue2: HTMLSpanElement;
 	private _spanValue3: HTMLSpanElement;
-	
-	
+
+
 
 
 
@@ -52,8 +52,14 @@ export class AlingedTiles implements ComponentFramework.StandardControl<IInputs,
 		// }
 
 		container.appendChild(this.createTile(context.parameters.colour1.raw || "", context.parameters.input1.raw || "", context.parameters.title1.raw || "", context.parameters.tabName1.raw || "", this._spanValue1));
-		container.appendChild(this.createTile(context.parameters.colour2.raw || "", context.parameters.input2.raw || "", context.parameters.title2.raw || "", context.parameters.tabName2.raw || "", this._spanValue2));
-		container.appendChild(this.createTile(context.parameters.colour3.raw || "", context.parameters.input3.raw || "", context.parameters.title3.raw || "", context.parameters.tabName3.raw || "", this._spanValue3));
+
+		let input2: string = context.parameters.input2.raw + "";
+		if (input2.trim().length > 0)
+			container.appendChild(this.createTile(context.parameters.colour2.raw || "", input2, context.parameters.title2.raw || "", context.parameters.tabName2.raw || "", this._spanValue2));
+
+		let input3: string = context.parameters.input3.raw + "";
+		if (input3.trim().length > 0)
+			container.appendChild(this.createTile(context.parameters.colour3.raw || "", input3, context.parameters.title3.raw || "", context.parameters.tabName3.raw || "", this._spanValue3));
 	}
 
 	private createTile(backgroundColor: string, text: string, title: string, tabName: string, span: HTMLSpanElement): HTMLDivElement {

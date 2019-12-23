@@ -8,17 +8,17 @@
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="input1" display-name-key="First tile input Value" description-key="Input value to be displayed on the tile." of-type-group="TextNumber" usage="bound" required="true" default-value="15" />
     <property name="title1" display-name-key="First tile title " description-key="Component Title" of-type="SingleLine.Text" usage="input" required="true" default-value="Title"/>
-    <property name="colour1" display-name-key="First tile background colour" description-key="Component Background Colour" of-type="SingleLine.Text" usage="input" required="true" default-value="#2672EC"/>
+    <property name="colour1" display-name-key="First tile background colour" description-key="Component Background Colour" of-type="SingleLine.Text" usage="input" required="false" default-value="#2672EC"/>
     <property name="tabName1" display-name-key="First tile tab name" description-key="Name of tab to navigate to associated with the first tile" of-type="SingleLine.Text" usage="input" required="false" />
 
-    <property name="input2" display-name-key="Second tile input Value" description-key="Input value to be displayed on the tile." of-type-group="TextNumber" usage="bound" required="true" default-value="15" />
-    <property name="title2" display-name-key="Second tile title" description-key="Component Title" of-type="SingleLine.Text" usage="input" required="true" default-value="Title"/>
+    <property name="input2" display-name-key="Second tile input Value" description-key="Input value to be displayed on the tile." of-type-group="TextNumber" usage="bound" required="false" />
+    <property name="title2" display-name-key="Second tile title" description-key="Component Title" of-type="SingleLine.Text" usage="input" required="false" default-value="Title"/>
     <property name="colour2" display-name-key="Second tile background colour" description-key="Component Background Colour" of-type="SingleLine.Text" usage="input" required="true" default-value="#2672EC"/>
     <property name="tabName2" display-name-key="Second tile tab Name" description-key="Name of tab to navigate to associated with the second tile" of-type="SingleLine.Text" usage="input" required="false" />
 
-    <property name="input3" display-name-key="Third tile input Value" description-key="Input value to be displayed on the tile." of-type-group="TextNumber" usage="bound" required="true" default-value="15" />
-    <property name="title3" display-name-key="Third tile title" description-key="Component Title" of-type="SingleLine.Text" usage="input" required="true" default-value="Title"/>
-    <property name="colour3" display-name-key="Third tile background colour" description-key="Component Background Colour" of-type="SingleLine.Text" usage="input" required="true" default-value="#2672EC"/>
+    <property name="input3" display-name-key="Third tile input Value" description-key="Input value to be displayed on the tile." of-type-group="TextNumber" usage="bound" required="false" />
+    <property name="title3" display-name-key="Third tile title" description-key="Component Title" of-type="SingleLine.Text" usage="input" required="false" default-value="Title"/>
+    <property name="colour3" display-name-key="Third tile background colour" description-key="Component Background Colour" of-type="SingleLine.Text" usage="input" required="false" default-value="#2672EC"/>
     <property name="tabName3" display-name-key="Third tile tab name" description-key="Name of tab to navigate to associated with the third tile" of-type="SingleLine.Text" usage="input" required="false" />
 
     <!-- 
