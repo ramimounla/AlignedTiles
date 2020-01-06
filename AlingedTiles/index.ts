@@ -58,7 +58,7 @@ export class AlingedTiles implements ComponentFramework.StandardControl<IInputs,
 		span.className = "spanstyle";
 		localDiv.appendChild(span);
 
-		span.innerText = text;
+		span.innerText = this.sanatiseNumber(text);
 		spanDescription.innerText = title;
 
 		if (((tabName).trim().length > 0)) {
@@ -68,9 +68,13 @@ export class AlingedTiles implements ComponentFramework.StandardControl<IInputs,
 
 		return localDiv;
 	}
+	sanatiseNumber(text: string): string {
+		return text == "null" || text == "" ? "0" : text;
+	}
 
 
 	private navigateToTab(tabName: string): void {
+		eval("Xrm.Page.ui.tabs.get(tabName).setVisible(true)");
 		eval("Xrm.Page.ui.tabs.get(tabName).setFocus()");
 	}
 	/**
