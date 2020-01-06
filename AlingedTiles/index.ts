@@ -31,7 +31,6 @@ export class AlingedTiles implements ComponentFramework.StandardControl<IInputs,
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container: HTMLDivElement) {
 		// Add control initialization code
 
-<<<<<<< HEAD
 		container.appendChild(this.createTile(context.parameters.colour1.raw || "", context.parameters.input1.raw || "", context.parameters.title1.raw || "", context.parameters.tabName1.raw || "", this._spanValue1));
 
 		let input2: string = context.parameters.input2.raw + "";
@@ -39,16 +38,6 @@ export class AlingedTiles implements ComponentFramework.StandardControl<IInputs,
 			container.appendChild(this.createTile(context.parameters.colour2.raw || "", context.parameters.input2.raw || "", context.parameters.title2.raw || "", context.parameters.tabName2.raw || "", this._spanValue2));
 
 		let input3: string = context.parameters.input3.raw + "";
-=======
-		//TODO conditional only if there are values in the div
-		container.appendChild(this.createTile(context.parameters.colour1.raw || "", context.parameters.input1.raw || "", context.parameters.title1.raw || "", context.parameters.tabName1.raw || "", this._spanValue1));
-
-		let input2 = context.parameters.input2.raw || "";
-		if (input2.trim().length > 0)
-			container.appendChild(this.createTile(context.parameters.colour2.raw || "", input2, context.parameters.title2.raw || "", context.parameters.tabName2.raw || "", this._spanValue2));
-
-		let input3 = context.parameters.input2.raw || "";
->>>>>>> bbdb1dc36b01d1296ad751f5c5fb92323f6bd20e
 		if (input3.trim().length > 0)
 			container.appendChild(this.createTile(context.parameters.colour3.raw || "", input3, context.parameters.title3.raw || "", context.parameters.tabName3.raw || "", this._spanValue3));
 	}
