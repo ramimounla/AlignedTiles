@@ -84,8 +84,8 @@ export class AlingedTiles implements ComponentFramework.StandardControl<IInputs,
 	public updateView(context: ComponentFramework.Context<IInputs>): void {
 		// Add code to update control view
 		this._spanValue1.innerText = context.parameters.input1.raw || "";
-		this._spanValue2.innerText = context.parameters.input1.raw || "";
-		this._spanValue3.innerText = context.parameters.input1.raw || "";
+		this._spanValue2.innerText = context.parameters.input2.raw || "";
+		this._spanValue3.innerText = context.parameters.input3.raw || "";
 	}
 
 	/** 
